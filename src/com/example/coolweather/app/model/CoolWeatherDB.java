@@ -3,7 +3,7 @@ package com.example.coolweather.app.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.coolweather.app.activity.CoolWeatherOpenHelper;
+import com.example.coolweather.app.db.CoolWeatherOpenHelper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -72,7 +72,7 @@ public class CoolWeatherDB {
 	
 	/*从数据库读取某省全部城市*/
 	public List<City> loadCities (int provincedId) {
-		Cursor cursor = db.query("City", null, "proviced_id = ?", 
+		Cursor cursor = db.query("City", null, "province_id = ?", 
 				new String[] {String.valueOf(provincedId)}, null, null, null);
 		List<City> list = new ArrayList<City>();
 		if (cursor.moveToFirst()) {
@@ -102,7 +102,7 @@ public class CoolWeatherDB {
 	
 	/*从数据库读取某市全部县*/
 	public List<County> loadCounties (int cityId) {
-		Cursor cursor = db.query("City", null, "city_id = ?", 
+		Cursor cursor = db.query("County", null, "city_id = ?", 
 				new String[] {String.valueOf(cityId)}, null, null, null);
 		List<County> list = new ArrayList<County>();
 		if (cursor.moveToFirst()) {
